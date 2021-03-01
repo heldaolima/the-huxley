@@ -58,8 +58,8 @@ int main()
         }
         
 
-        fgets(frase, 100, stdin);
-        getchar();
+        fgets(frase, 500, stdin);
+        
         tam = strlen(frase);
         printf("tam: %lf\n", tam);
         raiz = sqrt(tam-1);

@@ -1,0 +1,11 @@
+Submeter:
+3446
+
+3363 (talvez; nao sei se há um caso de espaço no final)
+
+Terminar:
+3354
+2599
+320 <-priority
+253
+843
