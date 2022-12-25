@@ -1,14 +1,5 @@
 #include <stdio.h>
 
-#define num_cidades 3
-#define num_temps 5
-
-enum capitais {
-    cap1,
-    cap2,
-    cap3
-};
-
 int main()
 {
     int i = 0, j = 0;
