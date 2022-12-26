@@ -5,59 +5,52 @@
 
 using namespace std;
 
-typedef struct boot {
-    int num;
-    char pe;
-} bota;
+typedef struct Botas {
+    int esquerdo;
+    int direito;
+} Botas;
 
-void print_vec(vector<bota> vec, int len) 
-{
-    for (int i = 0; i < len; i++) {
-        cout << "{ " << vec[i].num << ", " << vec[i].pe << " } ";
-    }
-    cout << "\n";
-}
-
-int pares(vector<bota> botas, int len)
+int pares(map<int, Botas> botas)
 {
     int counter = 0;
-    for (int i = 0; i < len-1; i++) {
-        if (botas[i].num == botas[i+1].num && 
-            ((botas[i].pe == 'D' && botas[i+1].pe == 'E') || (botas[i].pe == 'E' && botas[i+1].pe == 'D'))
-        ) {
-            counter++;
-        }
+    map<int, Botas>::iterator it;
+
+    for (it = botas.begin(); it != botas.end(); it++) {
+        counter += min(it->second.esquerdo, it->second.direito);
     }
 
     return counter;
 }
 
-bool compare_num(const bota b1, const bota b2) 
-{
-    return b1.num < b2.num;
-}
-
 int main()
 {
-    int len = 0, i = 0;
-
+    int len = 0, i = 0, num;
+    char pe;
+    
     while (true) {
         cin >> len;
 
-        if (len == -1) {
+        if (len == -1)
             break;
-        }
 
-        vector<bota> botas(len);
-
+        map<int, Botas> botas;
         for (i = 0; i < len; i++) {
-            scanf("%d %c\n", &botas[i].num, &botas[i].pe);
+            cin >> num >> pe;
+            
+            if (botas.count(num) == 0) {
+                botas[num] = {0, 0};
+            }
+            
+            if (pe == 'E') {
+                botas[num].esquerdo++;
+            }
+            else if (pe == 'D')  {
+                botas[num].direito++;
+            }
         }
 
-        sort(botas.begin(), botas.end(), compare_num);
-        
-        // print_vec(botas, len);
-        cout << pares(botas, len) << "\n";
+        cout << pares(botas) << "\n";
+        botas.clear();
     }
 
     return 0;
