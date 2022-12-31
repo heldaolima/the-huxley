@@ -1,10 +1,12 @@
 #include <stdio.h>
 
+typedef long long int lli;
+
 int main()
 {
-    int qtd, k;
-    scanf("%d %d", &qtd, &k);
+    lli qtd, k;
+    scanf("%lld %lld", &qtd, &k);
 
-    printf("%d\n", 1 + (qtd * k));
+    printf("%lld\n", 1 + (qtd * k));
     return 0;
 }
